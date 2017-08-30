@@ -11,10 +11,13 @@ var outer = function(){
 
   //Code Here
 
+  var inner = outer();
+
 //Once you do that, invoke inner.
 
   //Code Here
 
+  inner();
 
 
 //Next problem
@@ -34,7 +37,9 @@ var callFriend = function(){
 
   //Code Here
 
-
+  var callJake = callFriend();
+  
+  callJake("435-215-9248");
 
 //Next Problem
 
@@ -45,6 +50,13 @@ var callFriend = function(){
 */
 
   //Code Here
+  function makeCounter(){
+    var countme = 0;
+    return function(){
+      return countme += 1;
+    }
+  }
+  
   var count = makeCounter();
   count() // 1
   count() // 2
@@ -64,6 +76,28 @@ var callFriend = function(){
   After the function has been called N number of times, console.log('STAHHP');
 */
 
+function whatTheHell(cb){
+  var checky = false;
+  return function() {
+    if(!checky){
+      cb();
+      checky = true;
+    }
+  }
+}
 
+
+function whatTheHell(cb, n){
+  var checky = 0;
+  return function() {
+    if(checky < n){
+      cb();
+      checky++;
+    }
+    else{
+      console.log('STAHHP');
+    }
+  }
+}
 
 
